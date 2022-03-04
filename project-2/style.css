@@ -36,3 +36,10 @@ h1{
     background-color: #fff;
     cursor: pointer;
 }
+
+#copy-btn,input{
+    padding: 5px 10px;
+    border-style: none;
+    cursor: pointer;
+    margin-right: 5px;
+}
