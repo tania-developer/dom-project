@@ -16,6 +16,11 @@ function main(){
 
     copyBtn.addEventListener('click', function(){
         navigator.clipboard.writeText(output.value);
+        
+        const toast = document.createElement('div');
+        toast.className = 'toast-container' 
+        toast.innerText = `${output.value} copied`;
+        root.appendChild(toast);
     })
 }
 
