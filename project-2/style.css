@@ -53,3 +53,34 @@ h1{
     color: black;
     box-shadow: 2px 2px 5px rgb(206, 179, 179);
 }
+
+.toast-msg-in{
+    animation: slidein 0.5s ease-in;
+}
+
+.toast-msg-out{
+    animation: slideout 0.5s ease-in;
+}
+@keyframes slidein {
+    from {
+      transform: translateX(200px);
+      opacity: 0;
+    }
+  
+    to {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideout {
+    from {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  
+    to {
+      transform: translateX(200px);
+      opacity: 0;
+    }
+  }
