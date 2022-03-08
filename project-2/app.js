@@ -23,20 +23,30 @@ function main(){
             toast.remove();
             toast=null;
         }
-        toast = document.createElement('div');
-        toast.className = 'toast-container toast-msg-in' 
-        toast.innerText = `${output.value} copied`;
-        root.appendChild(toast);  
+        if(isValidHex(output.value)){
+            toast = document.createElement('div');
+            toast.className = 'toast-container toast-msg-in' 
+            toast.innerText = `${output.value} copied`;
+            root.appendChild(toast);  
 
-        toast.addEventListener('click', function(){
-            toast.classList.remove('toast-msg-in');
-            toast.classList.add('toast-msg-out');
-            toast.addEventListener('animationend', function(){
-                toast.remove();
-                toast = null;
+            toast.addEventListener('click', function(){
+                toast.classList.remove('toast-msg-in');
+                toast.classList.add('toast-msg-out');
+                toast.addEventListener('animationend', function(){
+                    toast.remove();
+                    toast = null;
+                 })
             })
-        })
+        } else {
+            alert('Invalid color code')
+        }
          
+    })
+
+    output.addEventListener('keyup', function(e){
+        if(isValidHex(e.target.value)){
+            root.style.backgroundColor = e.target.value;
+        }
     })
     
 }
@@ -47,4 +57,17 @@ function generateHex(){
     const blue = Math.floor(Math.random()*255);
 
     return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`
+}
+
+/**
+ * 
+ * @param {string} color 
+ */
+
+function isValidHex(color){
+    if(color.length !== 7) return false
+    if(color[0] != '#') return false;
+
+    color = color.substring(1);
+    return /^[0-9A-Fa-f]{6}$/i
 }
